@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var count: UILabel!
     var index = 1
-    var file = 1
+    var file = "right"
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -30,10 +30,18 @@ class ViewController: UIViewController {
 
     @IBAction func update(_ sender: Any) {
         
-        if index == 5{
-            index = 1
-        } else {
+        if file == "right"{
             index = index + 1
+            if index == 5 {
+                file = "left"
+            }
+            
+        } else if file == "left"{
+            index = index - 1
+            if index == 1{
+                file = "right"
+            }
+            
         }
         
         img.image = UIImage(named: "frame\(index).png")
